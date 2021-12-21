@@ -1,0 +1,4 @@
+artifact_location: file:///C:/Users/abner/Ciencia_de_dados_fundamental/rental_price_predicting/mlruns/1
+experiment_id: '1'
+lifecycle_stage: active
+name: rental_price

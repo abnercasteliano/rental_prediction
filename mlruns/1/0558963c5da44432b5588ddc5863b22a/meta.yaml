@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/abner/Ciencia_de_dados_fundamental/rental_price_predicting/mlruns/1/0558963c5da44432b5588ddc5863b22a/artifacts
+end_time: 1640042995826
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: 0558963c5da44432b5588ddc5863b22a
+run_uuid: 0558963c5da44432b5588ddc5863b22a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1640042995252
+status: 3
+tags: []
+user_id: abner
