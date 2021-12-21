@@ -54,12 +54,12 @@ Visão geral do Pipeline:
 Após a coleta dos dados foi feita a **Análise Exploratória dos Dados**, para resolver as principais dúvidas da empresa. Foram utilizadas técnicas de análise descritiva, análise univariáda e análise bivariada, para analisar variáveis categóricas e numéricas.
 
 * **Insights principais:**
-  *Existe forte correlação entre o **valor do seguro** e o **preço do aluguel**.
-  *Existe uma correlação entre o número de garagem e o valor do imóvel.**
-  *O número de quartos influencia diretamente o valor do aluguel.**
-  *O preço dos imóveis que aceitam animais são um pouco mais caros.**
-  *A maioria dos imóveis não mobiliados possuem o maior valor de aluguel.**
-  *Existe uma correlação positiva entre o número de garagem e o valor do imóvel.**
+  * Existe forte correlação entre o **valor do seguro** e o **preço do aluguel**.
+  * Existe uma correlação entre o número de garagem e o valor do imóvel.**
+  * O número de quartos influencia diretamente o valor do aluguel.**
+  * O preço dos imóveis que aceitam animais são um pouco mais caros.**
+  * A maioria dos imóveis não mobiliados possuem o maior valor de aluguel.**
+  * Existe uma correlação positiva entre o número de garagem e o valor do imóvel.**
 
 ### Machine Learning
 
