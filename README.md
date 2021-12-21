@@ -1,12 +1,12 @@
 # Stack - Rental Predicting
-<p align="center"><img src="images/build.jpg" width="800"></p>
+<p align="center"><img src="images/build.jpg" height="600" width="800"></p>
 Tecnologias:
 
 ![Jupyter Notebook](https://img.shields.io/badge/Jupyter-F37626.svg?&style=for-the-badge&logo=Jupyter&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Apache Airflow](https://img.shields.io/badge/Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white) ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
 ## 📃 Descrição do projeto
 O objetivo do projeto é desenvolver uma aplicação de Machine Learning para predizer o preço do aluguel de um imóvel, de acordo com seus atributos.
 
-O projeto envolve **Regressão Linear** e foi desenvolvido durante um bootcamp de Ciência de Dados da **[Stack Tecnologias](https://stacktecnologias.com.br/).
+O projeto envolve **Regressão Linear** e foi desenvolvido durante um bootcamp de Ciência de Dados da [Stack Tecnologias](https://stacktecnologias.com.br/).
 
 ### Entendimento do negócio
 
