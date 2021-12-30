@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Prediction</title>
+</head>
+
+<body>
+
+    <div style="color:black;font-family: helvetica;">
+        <form action="{{ url_for('predict')}}" method="post">
+            <h1 style="color:MintCream;">Churn classifier</h1>
+            <p style="color:black;font-size:medium;">Preencha os dados do imóvel e veja o preço previsto.</p>
+            <h3>Área do imóvel(m²):</h3>
+                <input name="area" type="number" id="Area" min="1" value="0" step="1" required="required">
+            <h3>Número de quartos:</h3>
+                <input name="num_quartos" type="number" id="Quartos" value="0" step="1" required="required">
+            <h3>Número de banheiros:</h3>
+                <input name="num_banheiros" type="number" id="Banheiros" value="0" step="1" required="required">
+            <h3>Número de andares:</h3>
+                <input name="num_andares" type="number" id="Andares" value="0" step="1" required="required">
+            <h3>Número de garagens:</h3>
+                <input name="garagem" type="number" id="Garagem" value="0" step="1" required="required">
+            <h3>Imóvel mobiliado?</h3>
+            <select name="mobilia" type="number" id="Mobilia" required="required">
+                <option value=1>Mobiliado</option>
+                <option value=0>Não mobiliado</option>
+            </select>
+            <h3>Valor do condomínio:</h3>
+                <input name="valor_condominio" type="number" id="Condominio" value=0000.00, step=0.01 required="required">
+            <h3>Valor do IPTU:</h3>
+                <input name="valor_iptu" type="number" id="Iptu" value=0000.00, step=0.01 required="required">
+            <h3>Valor do Seguro incêndio:</h3>
+                <input name="valor_seguro_incendio" type="number" id="Incendio" value=0000.00, step=0.01 required="required">
+            <h3>Está na cidade de São Paulo?</h3>
+            <select name="cidade_sao_paulo" type="number" id="Cidade" required="required">
+                <option value=1>Sim</option>
+                <option value=0>Não</option>
+            </select>
+            <br><button id="sub" type="submit ">Iniciar</button>
+            <br>
+        </form>
+	    <br>
+            <h2 style="color: #2d7d25"> {{prediction_texts}} </h2>
+    </div>
+
+    <style>
+    	h1 {
+    		background-color: #00d22f;
+    		width: auto;
+  		    border: 3px solid powderblue;
+  		    text-align:center;
+  		    position: relative;
+            margin: auto;
+	    }
+
+	    h2 {
+    		background-color: #9cffd4;
+ 			width: auto;
+ 			padding: 30px;
+  		    border: 4px solid powderblue;
+  		    text-align:center;
+  		    position: relative;
+            margin: auto;
+	    }
+
+        body {
+            background-color: #00bfff;
+            text-align: center;
+            padding: auto;
+        }
+
+
+        #Area {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+            margin-top: 0.1em;
+        }
+        
+        #Area:hover {
+            background-color: white;
+        }
+
+
+        #Quartos {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+            margin-top: 0.1em;
+        }
+        
+        #Quartos:hover {
+            background-color: white;
+        }
+          
+
+        #Banheiros {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+            margin-top: 0.1em;
+        }
+        
+        #Banheiros:hover {
+            background-color: white;
+        }
+
+        #Andares {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+            margin-top: 0.1em;
+        }
+        
+        #Andares:hover {
+            background-color: white;
+        }
+
+        #Garagem {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+            margin-top: 0.1em;
+        }
+        
+        #Garagem:hover {
+            background-color: white;
+        }
+
+        #Mobilia {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+            margin-top: 0.1em;
+        }
+        
+        #Mobilia:hover {
+            background-color: white;
+        }
+        
+        #Condominio {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+            margin-top: 0.1em;
+        }
+        
+        #Condominio:hover {
+            background-color: white;
+        }
+
+        #Iptu {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+            margin-top: 0.1em;
+        }
+        
+        #Iptu:hover {
+            background-color: white;
+        }
+
+        #Incendio {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+            margin-top: 0.1em;
+        }
+        
+        #Incendio:hover {
+            background-color: white;
+        }
+
+        #Cidade {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+            margin-top: 0.1em;
+        }
+        
+        #Cidade:hover {
+            background-color: white;
+        }
+
+        #sub {
+            width: 100px;
+            height: 47px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+            margin-top: 1.2em;
+        }
+        
+        #sub:hover {
+            background-color: SkyBlue;
+        }
+    </style>
+</body>
+
+</html>

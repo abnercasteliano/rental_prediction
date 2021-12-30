@@ -75,6 +75,6 @@ Visão geral do Pycaret:
 
 <p align="center">Fonte Youtube: <a href="https://www.youtube.com/c/Stack_tecnologias">Stack</a></p>
 
-### Deploy do Data App - Streamlit
+### Deploy do Data App - Flask
 
-Após a criação do modelo preditivo foi criado uma aplicação web através do Streamlit share.
+Após a criação do modelo preditivo foi criado uma aplicação web utilizando o Flask.

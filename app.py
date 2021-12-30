@@ -1,59 +1,85 @@
+from flask import Flask, render_template, request
+import jsonify
+import requests
+import joblib
 import pandas as pd
-import streamlit as st
-from pycaret.regression import*
 
 # carregando o modelo do disco
-model = load_model('extra_trees')
+model = joblib.load('extra_trees.pkl')
 
-# Título do data app
-st.title('Data App - Predição do Preço de Alugueis')
+app = Flask(__name__)
 
-# subtítulo
-st.markdown('Este é um Data App para exibir a solução de Machine Learning')
+@app.route('/')
+def home():
+    return render_template('index.html')
 
-st.sidebar.subheader('Defina os atributos do imóvel para prever o aluguel')
+@app.route('/predict', methods=['POST'])
+def predict():
+    #### POST ####
+    if request.method == 'POST':
+        #area
+        area=request.form['area']
 
-# mapeando dados de entrada do usuário
-area = st.sidebar.number_input(label='Área total', value=0, step=1)
-num_quartos = st.sidebar.number_input(label='Núm. de quartos', value=0, step=1)
-num_banheiros = st.sidebar.number_input(label='Núm. de banheiros', value=0, step=1)
-num_andares = st.sidebar.number_input(label='Núm. de Andares', value=0, step=1)
-garagem = st.sidebar.number_input(label='Vagas de garagem', value=0, step=1)
-mobilia = st.sidebar.selectbox('Imóvel mobiliado?', ('Sim', 'Não'))
-#transformando mobilia
-mobilia = 1 if mobilia == 'Sim' else 0
+        #num_quartos
+        num_quartos=request.form['num_quartos']
 
-valor_condominio = st.sidebar.number_input(label='Valor do condomínio', value=0.00, step=0.01, format="%.2f")
-valor_iptu = st.sidebar.number_input(label='Valor do IPTU', value=0.00, step=0.01, format="%.2f")
-valor_seguro = st.sidebar.number_input(label='Valor seguro incêndio', value=0.00, step=0.01, format="%.2f")
-cidade_sao_paulo = st.sidebar.selectbox('A cidade é São Paulo?', ('Sim', 'Não'))
-# formatando cidade
-cidade_sao_paulo = 1 if cidade_sao_paulo == 'Sim' else 0
+        #num_banheiros
+        num_banheiros=request.form['num_banheiros']
 
-# criando um botão na tela
-btn_predict = st.sidebar.button('Iniciar Predição')
+        #num_andares
+        num_andares=request.form['num_andares']
 
-if btn_predict:
-    df_teste = pd.DataFrame()
-    
-    df_teste['area'] = [area]
-    df_teste['num_quartos'] = [num_quartos]
-    df_teste['num_banheiros'] = [num_banheiros]
-    df_teste['num_andares'] = [num_andares]
-    df_teste['garagem'] = [garagem]
-    df_teste['mobilia'] = [mobilia]
-    df_teste['valor_condominio'] = [valor_condominio]
-    df_teste['valor_iptu'] = [valor_iptu]
-    df_teste['valor_seguro_incendio'] = [valor_seguro]
-    df_teste['cidade_São Paulo'] = [cidade_sao_paulo]
-    
-    st.dataframe(df_teste)
-    # Realizando a predição
-    result = predict_model( model,
-                       data = df_teste
-                       )["Label"]
+        #garagem
+        garagem=request.form['garagem']
 
-    st.subheader('O preço do aluguel previsto para o imóvel é:')
-    result = 'R$ '+str(round(result[0],2))
+        #mobilia
+        mobilia=request.form['mobilia']
+        if(mobilia=='Sim'):
+            mobilia=1
+        else:
+            mobilia=0
 
-    st.write(result)
+        #valor_condominio
+        valor_condominio=request.form['valor_condominio']
+
+        # valor_iptu
+        valor_iptu=request.form['valor_iptu']
+
+        # valor_seguro_incendio
+        valor_seguro_incendio=request.form['valor_seguro_incendio']
+
+        #cidade_sao_paulo
+        cidade_sao_paulo=request.form['cidade_sao_paulo']
+        if(cidade_sao_paulo=='Sim'):
+            cidade_sao_paulo=1
+        else:
+            cidade_sao_paulo=0
+        
+        teste = pd.DataFrame()
+
+        teste['area'] = [area]
+        teste['num_quartos'] = [num_quartos]
+        teste['num_banheiros'] = [num_banheiros]
+        teste['num_andares'] = [num_andares]
+        teste['garagem'] = [garagem]
+        teste['mobilia'] = [mobilia]
+        teste['valor_condominio'] = [valor_condominio]
+        teste['valor_iptu'] = [valor_iptu]
+        teste['valor_seguro_incendio'] = [valor_seguro_incendio]
+        teste['cidade_São Paulo'] = [cidade_sao_paulo]
+
+        prediction = model.predict(teste)
+
+        # Realizando a predição
+        result = round(prediction[0],3)
+
+        if result<0:
+            return render_template('index.html', prediction_texts="Este imóvel não pode ser vendido")
+        else:
+            return render_template('index.html', prediction_texts="Preço do aluguel estimado: R$ "+str(result).replace('.',',')+'0')
+     
+    else:
+        return render_template('index.html')
+        
+if __name__ == "__main__":
+    app.run(debug=True)
