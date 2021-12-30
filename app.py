@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request
 import jsonify
 import requests
-import joblib
+import pickle
 import pandas as pd
 
 # carregando o modelo do disco
-model = joblib.load('extra_trees.pkl')
+model = pickle.load(open('extra_trees.pkl', 'rb'))
 
 app = Flask(__name__)
 
