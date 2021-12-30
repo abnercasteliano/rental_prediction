@@ -6040,3 +6040,53 @@ mlflow.exceptions.MlflowException: Experiment 'rental_price' already exists.
 2021-12-30 12:38:38,968:INFO:Preloading libraries
 2021-12-30 12:54:17,151:INFO:Initializing load_model()
 2021-12-30 12:54:17,151:INFO:load_model(model_name=extra_trees, platform=None, authentication=None, verbose=True)
+2021-12-30 18:44:53,204:INFO:Initializing load_model()
+2021-12-30 18:44:53,205:INFO:load_model(model_name=extra_trees, platform=None, authentication=None, verbose=True)
+2021-12-30 18:45:04,892:INFO:Initializing load_model()
+2021-12-30 18:45:04,893:INFO:load_model(model_name=extra_trees, platform=None, authentication=None, verbose=True)
+2021-12-30 18:45:06,611:INFO:Initializing load_model()
+2021-12-30 18:45:06,612:INFO:load_model(model_name=extra_trees, platform=None, authentication=None, verbose=True)
+2021-12-30 18:45:08,561:INFO:Initializing load_model()
+2021-12-30 18:45:08,562:INFO:load_model(model_name=extra_trees, platform=None, authentication=None, verbose=True)
+2021-12-30 18:45:11,919:INFO:Initializing load_model()
+2021-12-30 18:45:11,919:INFO:load_model(model_name=extra_trees, platform=None, authentication=None, verbose=True)
+2021-12-30 18:45:13,733:INFO:Initializing load_model()
+2021-12-30 18:45:13,734:INFO:load_model(model_name=extra_trees, platform=None, authentication=None, verbose=True)
+2021-12-30 18:45:16,491:INFO:Initializing load_model()
+2021-12-30 18:45:16,492:INFO:load_model(model_name=extra_trees, platform=None, authentication=None, verbose=True)
+2021-12-30 18:45:17,717:INFO:Initializing load_model()
+2021-12-30 18:45:17,718:INFO:load_model(model_name=extra_trees, platform=None, authentication=None, verbose=True)
+2021-12-30 18:45:22,199:INFO:Initializing load_model()
+2021-12-30 18:45:22,200:INFO:load_model(model_name=extra_trees, platform=None, authentication=None, verbose=True)
+2021-12-30 18:45:30,177:INFO:Initializing load_model()
+2021-12-30 18:45:30,178:INFO:load_model(model_name=extra_trees, platform=None, authentication=None, verbose=True)
+2021-12-30 18:45:33,238:INFO:Initializing load_model()
+2021-12-30 18:45:33,239:INFO:load_model(model_name=extra_trees, platform=None, authentication=None, verbose=True)
+2021-12-30 18:45:35,286:INFO:Initializing load_model()
+2021-12-30 18:45:35,286:INFO:load_model(model_name=extra_trees, platform=None, authentication=None, verbose=True)
+2021-12-30 18:45:35,409:INFO:Initializing predict_model()
+2021-12-30 18:45:35,409:INFO:predict_model(estimator=Pipeline(steps=[('dtypes',
+                 DataTypes_Auto_infer(ml_usecase='regression',
+                                      numerical_features=['area', 'num_quartos',
+                                                          'num_banheiros',
+                                                          'num_andares',
+                                                          'garagem', 'mobilia',
+                                                          'valor_condominio',
+                                                          'valor_iptu',
+                                                          'valor_seguro_incendio',
+                                                          'cidade_São Paulo'],
+                                      target='valor_aluguel')),
+                ('imputer',
+                 Simple_Imputer(categorical_strategy='not_available',
+                                fill_value_categorical=No...
+                ('binn', 'passthrough'), ('rem_outliers', 'passthrough'),
+                ('cluster_all', 'passthrough'),
+                ('dummy', Dummify(target='valor_aluguel')),
+                ('fix_perfect', Remove_100(target='valor_aluguel')),
+                ('clean_names', Clean_Colum_Names()),
+                ('feature_select', 'passthrough'), ('fix_multi', 'passthrough'),
+                ('dfs', 'passthrough'), ('pca', 'passthrough'),
+                ['trained_model',
+                 ExtraTreesRegressor(n_jobs=-1, random_state=6124)]]), probability_threshold=None, encoded_labels=True, round=4, verbose=True, ml_usecase=MLUsecase.REGRESSION, display=None)
+2021-12-30 18:45:35,411:INFO:Checking exceptions
+2021-12-30 18:45:35,412:INFO:Preloading libraries
